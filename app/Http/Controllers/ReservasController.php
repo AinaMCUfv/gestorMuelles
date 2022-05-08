@@ -91,7 +91,7 @@ class ReservasController extends Controller
          ]);
 
         $tomorrowMidnight = mktime($request->get('fecha'), 0, 0, date('n'), date('j') + 1);
-        $fecha_final = date('y-m-j H:m', $tomorrowMidnight);//Apr 26 2022 6:00 PM
+        $fecha_final = date('y-m-j H:i', $tomorrowMidnight);//Apr 26 2022 6:00 PM
 
 
          DB::update('update reservas set fecha =? where id = ?', array($fecha_final,$reserva->id));

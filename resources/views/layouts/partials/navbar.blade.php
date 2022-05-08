@@ -6,15 +6,18 @@
       </a>
 
       <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-        <li><a href="" class="nav-link px-2 text-white">Home</a></li>
+        <li><a href="{{ route('reservas.index') }}" class="nav-link px-2 text-white">Home</a></li>
         @auth
-          <li><a href="" class="nav-link px-2 text-white">Users</a></li>
+          @if(Auth::user()->rol == "Admin")
+            <li><a href="{{ route('usuarios.index') }}" class="nav-link px-2 text-white">Users</a></li>
+          @endif
         @endauth
       </ul>
 
+      <!--
       <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
         <input type="search" class="form-control form-control-dark" placeholder="Search..." aria-label="Search">
-      </form>
+      </form>-->
 
       @auth
         {{auth()->user()->name}}&nbsp;

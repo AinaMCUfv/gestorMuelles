@@ -26,7 +26,7 @@
         <table class="table table-striped">
             <thead>
             <tr>
-                <th scope="col" width="1%">#</th>
+                <th scope="col" width="1%">ID</th>
                 <th scope="col" width="15%">Num Pedido</th>
                 <th scope="col" width="10%">Tipo Vehiculo</th>
                 <th scope="col" width="10%">Carga/descarga</th>
@@ -45,14 +45,14 @@
                         <th scope="row">{{ $reserva->fecha }}</th>
                         <th scope="row">{{ $reserva->idusuario }}</th>
                         @if(Auth::user()->rol != "Trabajador")
-                            <td><a href="" class="btn btn-warning btn-sm">Show</a></td>
-                           <!-- {{ Log::info($reserva->fecha) }}
+                            <!--<td><a href="" class="btn btn-warning btn-sm">Show</a></td>
+                            {{ Log::info($reserva->fecha) }}
                             {{ Log::info(date('Y-m-d H:i:s')) }}-->
                             
                             @if($reserva->fecha >= date('Y-m-d H:i:s'))
                                 <td><a href="{{ route('reservas.edit', $reserva->id) }}" class="btn btn-info btn-sm">Edit</a></td>
                             @else
-                                 <td><a disabled class="btn btn-info btn-sm">Edit</a></td>
+                                 <td><a disabled class="btn btn-secondary btn-sm">Edit</a></td>
                             @endif
                         @endif                        
                         @if(Auth::user()->rol == "Admin" || Auth::user()->rol == "Conductor")

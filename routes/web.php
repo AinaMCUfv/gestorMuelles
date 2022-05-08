@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\ReservasController;
+use App\Http\Controllers\UsuariosController;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,4 +46,13 @@ Route::group(['prefix' => 'reservas'], function() {
             Route::get('/{reserva}/edit', [ReservasController::class, 'edit'])->name('reservas.edit');
             Route::patch('/{reserva}/update', [ReservasController::class, 'update'])->name('reservas.update');
             Route::delete('/{reserva}/delete', [ReservasController::class, 'destroy'])->name('reservas.destroy');
+    });
+
+Route::group(['prefix' => 'usuarios'], function() {
+            Route::get('/', [UsuariosController::class, 'index'])->name('usuarios.index');
+            Route::get('/create', [UsuariosController::class, 'create'])->name('usuarios.create');
+            Route::post('/darAltaUsuario', [UsuariosController::class, 'darAltaUsuario']);
+            Route::get('/{usuario}/edit', [UsuariosController::class, 'edit'])->name('usuarios.edit');
+            Route::patch('/{usuario}/update', [UsuariosController::class, 'update'])->name('usuarios.update');
+            Route::delete('/{usuario}/delete', [UsuariosController::class, 'destroy'])->name('usuarios.destroy');
     });

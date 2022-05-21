@@ -46,6 +46,7 @@ Route::group(['prefix' => 'reservas'], function() {
             Route::get('/{reserva}/edit', [ReservasController::class, 'edit'])->name('reservas.edit');
             Route::patch('/{reserva}/update', [ReservasController::class, 'update'])->name('reservas.update');
             Route::delete('/{reserva}/delete', [ReservasController::class, 'destroy'])->name('reservas.destroy');
+            Route::get('/historico', [ReservasController::class, 'historico'])->name('reservas.historico');
     });
 
 Route::group(['prefix' => 'usuarios'], function() {

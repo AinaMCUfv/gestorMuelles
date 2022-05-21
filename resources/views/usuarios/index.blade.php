@@ -39,7 +39,7 @@
                         <th scope="row">{{ $usuario->name }}</th>
                         <th scope="row">{{ $usuario->email }}</th>
                         <th scope="row">{{ $usuario->rol }}</th>
-                        <th scope="row">{{ $usuario->borrado }}</th>
+                        <th scope="row">{{ $usuario->borrado == 1 ? "Borrado" : "Activa"}}</th>
                          <td><a href="{{ route('usuarios.edit', $usuario->id) }}" class="btn btn-info btn-sm">Reset pass</a></td>
                         <td>
                             {!! Form::open(['method' => 'DELETE','route' => ['usuarios.destroy', $usuario->id],'style'=>'display:inline']) !!}

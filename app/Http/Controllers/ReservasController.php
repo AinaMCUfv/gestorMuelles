@@ -42,6 +42,13 @@ class ReservasController extends Controller
         return view('reservas.create');
     }
 
+    public function historico() 
+    {
+        $reservas = DB::select('select * from reservas where idUsuario=?', array(Auth::user()->id));
+
+        return view('reservas.historico', compact('reservas'));
+    }
+
     function darAltaReserva(Request $request)
     {
          $this->validate($request, [
@@ -130,7 +137,7 @@ class ReservasController extends Controller
         //print_r($fecha_final);die;
         $reservas = DB::select('select * from reservas where matricula=? and entrada = 1', array($data['matricula']));
         if(count($reservas) > 0){
-            
+
 
         }else{
             $reservas = DB::select('select * from reservas where (fecha + INTERVAL 10 MINUTE > now() and fecha - INTERVAL 10 MINUTE < now()) and matricula=?', array($data['matricula']));

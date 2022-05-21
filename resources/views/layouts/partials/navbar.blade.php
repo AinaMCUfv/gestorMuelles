@@ -17,6 +17,11 @@
             <li><a href="{{ route('matriculas.index') }}" class="nav-link px-2 text-white">Validador de matriculas</a></li>
           @endif
         @endauth
+        @auth
+          @if(Auth::user()->rol == "Conductor")
+            <li><a href="{{ route('reservas.historico') }}" class="nav-link px-2 text-white">Historico de reservas</a></li>
+          @endif
+        @endauth
       </ul>
 
       <!--

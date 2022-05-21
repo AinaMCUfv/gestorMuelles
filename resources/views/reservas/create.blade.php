@@ -7,6 +7,19 @@
             Añade una nueva reserva a tu listado.
         </div>
 
+          @if ($message = Session::get('error'))
+           <div class="alert alert-danger alert-block">
+            <strong>{{ $message }}</strong>
+           </div>
+           @endif
+
+           @if ($message = Session::get('success'))
+           <div class="alert alert alert-success alert-block">
+            <strong>{{ $message }}</strong>
+           </div>
+           @endif
+
+
         <div class="container mt-4">
             <form method="POST" action="{{ url('/reservas/darAltaReserva') }}">
                 @csrf
@@ -29,6 +42,10 @@
                          <option value="Lona">Lona</option>
                          <option value="Furgoneta">Furgoneta</option>
                      </select> 
+                </div>
+                 <div class="mb-3">
+                    <label for="tipo" class="form-label">Matricula</label>
+                      <input type="text" class="form-control" name="matricula" placeholder="Matricula">
                 </div>
                 <div class="mb-3">
                     <label for="carga" class="form-label">Acción</label>

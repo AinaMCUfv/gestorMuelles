@@ -12,6 +12,11 @@
             <li><a href="{{ route('usuarios.index') }}" class="nav-link px-2 text-white">Users</a></li>
           @endif
         @endauth
+        @auth
+          @if(Auth::user()->rol == "Trabajador")
+            <li><a href="{{ route('matriculas.index') }}" class="nav-link px-2 text-white">Validador de matriculas</a></li>
+          @endif
+        @endauth
       </ul>
 
       <!--

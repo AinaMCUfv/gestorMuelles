@@ -56,3 +56,7 @@ Route::group(['prefix' => 'usuarios'], function() {
             Route::patch('/{usuario}/update', [UsuariosController::class, 'update'])->name('usuarios.update');
             Route::delete('/{usuario}/delete', [UsuariosController::class, 'destroy'])->name('usuarios.destroy');
     });
+Route::group(['prefix' => 'matriculas'], function() {
+            Route::get('/', [ReservasController::class, 'matriculas'])->name('matriculas.index');
+            Route::post('/check', [ReservasController::class, 'check'])->name('matriculas.check');
+    });

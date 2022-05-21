@@ -77,22 +77,27 @@ class MainController extends Controller
 	     if(Auth::attempt($user_data))
 	     {
 
-	     	$results = DB::select('select * from users where email = ?', array($user_data['email']));
+	     	$results = DB::select('select * from users where email = ? and borrado = 0', array($user_data['email']));
 	     	$resultArray = json_decode(json_encode($results), true);
 	     	//print_r($resultArray);
+	     	if(count($resultArray) != 0){
+	     		if($resultArray[0]['rol'] == "Admin"){
+					return redirect('main/successlogin');
+		     	}else if($resultArray[0]['rol'] == "Conductor"){
+					return redirect('main/successconductor');
+		     	}else if($resultArray[0]['rol'] == "Trabajador"){
+		     		return redirect('main/successtrabajador');
+		     	}
+		     }else{
+		     	return back()->with('error', 'Usuario dado de baja');
+		     }
 
-	     	if($resultArray[0]['rol'] == "Admin"){
-				return redirect('main/successlogin');
-	     	}else if($resultArray[0]['rol'] == "Conductor"){
-				return redirect('main/successconductor');
-	     	}else if($resultArray[0]['rol'] == "Trabajador"){
-	     		return redirect('main/successtrabajador');
-	     	}
+	     	
 
 	     }
 	     else
 	     {
-	      	return back()->with('error', 'Wrong Login Details');
+	      	return back()->with('error', 'Usuario o password incorrecto');
 	     }
 
     }

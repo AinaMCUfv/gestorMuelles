@@ -29,7 +29,7 @@
                 <th scope="col" width="10%">Email</th>
                 <th scope="col" width="10%">Rol</th>
                 <th scope="col" width="5%">Activo</th>
-                <th scope="col" width="1%" colspan="3"></th>    
+                <th scope="col" width="5%" colspan="3"></th>    
             </tr>
             </thead>
             <tbody>
@@ -40,7 +40,7 @@
                         <th scope="row">{{ $usuario->email }}</th>
                         <th scope="row">{{ $usuario->rol }}</th>
                         <th scope="row">{{ $usuario->borrado }}</th>
-                        <td><a class="btn btn-info btn-sm">Edit</a></td>
+                         <td><a href="{{ route('usuarios.edit', $usuario->id) }}" class="btn btn-info btn-sm">Reset pass</a></td>
                         <td>
                             {!! Form::open(['method' => 'DELETE','route' => ['usuarios.destroy', $usuario->id],'style'=>'display:inline']) !!}
                             {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-sm']) !!}

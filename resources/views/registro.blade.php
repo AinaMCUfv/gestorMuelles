@@ -57,7 +57,6 @@
      <select class="form-control" name="rol">
          <option selected>Selecciona el tipo perfil:</option>
          <option value="Conductor">Conductor</option>
-         <option value="Admin">Admin</option>
          <option value="Trabajador">Trabajador</option>
      </select>
     </div>

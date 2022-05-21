@@ -81,24 +81,22 @@ class UsuariosController extends Controller
 
     }
 
-    function edit(Reserva $reserva) 
+    function edit(User $usuario) 
     {
-        return view('usuarios.edit', ['reserva' => $reserva]);
+        return view('usuarios.edit', ['usuario' => $usuario]);
     }
 
-    function update(Reserva $reserva, Request $request) 
+    function update(User $usuario, Request $request) 
     {
          $this->validate($request, [
-              'fecha'  => 'required'
+              'password'  => 'required|alphaNum|min:3',
+              'password2'  => 'required|alphaNum|min:3',
          ]);
 
-        $tomorrowMidnight = mktime($request->get('fecha'), 0, 0, date('n'), date('j') + 1);
-        $fecha_final = date('y-m-j H:i', $tomorrowMidnight);//Apr 26 2022 6:00 PM
 
+         DB::update('update users set password =? where id = ?', array(Hash::make($request->get('password')),$usuario->id));
 
-         DB::update('update usuarios set fecha =? where id = ?', array($fecha_final,$reserva->id));
-
-        return redirect()->route('usuarios.index')->withSuccess(__('Reserva modificada correctamente.'));
+        return redirect()->route('usuarios.index')->withSuccess(__('Contraseña modificada correctamente.'));
     }
 
    

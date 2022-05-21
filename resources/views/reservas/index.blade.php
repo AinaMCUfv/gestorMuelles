@@ -29,6 +29,7 @@
                 <th scope="col" width="1%">ID</th>
                 <th scope="col" width="15%">Num Pedido</th>
                 <th scope="col" width="10%">Tipo Vehiculo</th>
+                <th scope="col" width="10%">Matricula</th>
                 <th scope="col" width="10%">Carga/descarga</th>
                 <th scope="col" width="20%">Fecha</th>
                 <th scope="col" width="10%">Id usuario</th>
@@ -41,6 +42,7 @@
                         <th scope="row">{{ $reserva->id }}</th>
                         <th scope="row">{{ $reserva->numpedido }}</th>
                         <th scope="row">{{ $reserva->tipov }}</th>
+                        <th scope="row">{{ $reserva->matricula }}</th>
                         <th scope="row">{{ $reserva->carga }}</th>
                         <th scope="row">{{ $reserva->fecha }}</th>
                         <th scope="row">{{ $reserva->idusuario }}</th>
